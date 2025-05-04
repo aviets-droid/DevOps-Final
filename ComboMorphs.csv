@@ -1,0 +1,34 @@
+comboname,basemorphs,polygenics,combos,healthinfo,linebred
+Sunglow,Albino,"Tangerine, Super Hypo",N/A,N/A,FALSE
+Tangerine Albino,Albino,Tangerine,N/A,N/A,FALSE
+Hybino,Albino,"Tangerine, Hypo",N/A,N/A,FALSE
+Tangelo,Tremper Albino,Tangerine,N/A,N/A,FALSE
+Sunrise,"Albino, Blizzard",Tangerine,N/A,N/A,FALSE
+Sunset,Blizzard,Tangerine,N/A,N/A,FALSE
+Raining Red Stripe,Rainwater Albino,Red Stripe,N/A,N/A,FALSE
+Firewater,Rainwater Albino,N/A,Sunglow,N/A,TRUE
+BEE (Black Eyed Eclipse),"Enigma, Eclipse",N/A,N/A,Enigma Syndrome (ES),FALSE
+Black Hole,"Mack Snow, Enigma, Eclipse",N/A,N/A,Enigma Syndrome (ES),FALSE
+Total Eclipse (Galaxy),"Super Snow, Eclipse",N/A,N/A,N/A,FALSE
+Universe,"Super Snow, Eclipse, W/Y",N/A,N/A,N/A,FALSE
+Snowglow,"Snow, Albino",Tangerine,N/A,N/A,TRUE
+Creamsicle,Snow,Tangerine,N/A,N/A,TRUE
+Banana Blizzard,"Blizzard, Murphy Patternless",N/A,N/A,N/A,FALSE
+Super Platinum,"Super Snow, Murphy Patternless",N/A,N/A,N/A,FALSE
+RAPTOR,"Tremper Albino, Eclipse",N/A,N/A,N/A,FALSE
+Ember,"Tremper Albino, Eclipse, Murphy Patternless",N/A,N/A,N/A,FALSE
+Snowflake,"Mack Snow, Tremper Albino, Eclipse, Murphy Patternless",N/A,N/A,N/A,FALSE
+Blazing Blizzard,"Albino, Blizzard",N/A,N/A,N/A,FALSE
+Diablo Blanco,"Tremper Albino, Blizzard, Eclipse",N/A,N/A,Aggression,FALSE
+Nova,"Tremper Albino, Eclipse, Enigma",N/A,N/A,Enigma Syndrome (ES),FALSE
+Super Nova,"Super Snow, Tremper Albino, Eclipse, Enigma",N/A,N/A,Enigma Syndrome (ES),FALSE
+Dreamsickle,"Mack Snow, Tremper Albino, Eclipse, Enigma",N/A,N/A,Enigma Syndrome (ES),FALSE
+RADAR,"Bell Albino, Eclipse",N/A,N/A,N/A,FALSE
+Stealth,"Snow, Enigma",N/A,Radar,Enigma Syndrome (ES),FALSE
+Super Stealth,"Super Snow, Enigma",N/A,Radar,Enigma Syndrome (ES),FALSE
+White Knight,"Bell Albino, Eclipse, Blizzard",N/A,N/A,N/A,FALSE
+Typhoon,"Rainwater Albino, Eclipse",N/A,N/A,N/A,FALSE
+Cyclone,"Rainwater Albino, Eclipse, Murphy Patternless",N/A,N/A,N/A,FALSE
+Aurora,"Bell Albino, W/Y",N/A,N/A,N/A,FALSE
+Phantom,TUG Snow,N/A,Sunglow,N/A,TRUE
+Super RAPTOR,Super Snow,N/A,RAPTOR,N/A,FALSE
