@@ -7,6 +7,7 @@ class GeckoView:
     def __init__(self, geckoModel):
         self.geckoModel = geckoModel
     
+    @staticmethod
     def printStartMenu():
         print("\n-- Leopard Gecko Collection Manager --\n\nSelect an action:\n1. Create a collection\n2. Add a gecko to my collection\n3. View my geckos\n4. Delete my collection table (erases all saved geckos!)")
         print("0. Exit\n")
@@ -26,11 +27,13 @@ class GeckoView:
                 print("\nInvalid input.\n")
         return userinput
     
+    @staticmethod
     def printGeckoInfo(gecko):
         print("\n" + gecko.name + ", " + gecko.sex + ", " + str(gecko.age) + " years old.")
         print("Morphs: " + gecko.getMorphs())
         print("Health-related notes: " + gecko.getHealthInfo())
     
+    @staticmethod
     def newGeckoRoutine():
         newgecko = GeckoModel.GeckoModel
         
