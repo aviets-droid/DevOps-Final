@@ -3,6 +3,7 @@ from unittest.mock import patch, MagicMock
 from io import StringIO
 
 from GeckoView import GeckoView
+from GeckoModel import GeckoModel
 
 class TestGeckoView(unittest.TestCase):
 
@@ -19,15 +20,15 @@ class TestGeckoView(unittest.TestCase):
         self.assertEqual(result, 1)
         self.assertIn("Created a new collection.", mock_stdout.getvalue())
 
-    @patch('builtins.input', side_effect=['Leo', 'Female', '2', '2', 'Hypo', 'Tangerine', 'Healthy'])
+    @patch('builtins.input', side_effect=['Leo', 'Female', '12', '1', 'Tangerine', 'Healthy'])
     def test_new_gecko_routine(self, mock_input):
         new_gecko = self.view.newGeckoRoutine()
 
-        self.mockGeckoInstance.setName.assert_called_with('Leo')
-        self.mockGeckoInstance.setSex.assert_called_with('Female')
-        self.mockGeckoInstance.setAge.assert_called_with(2)
-        self.assertEqual(self.mockGeckoInstance.morphstr, ['Hypo', 'Tangerine'])
-        self.assertIn('Healthy', self.mockGeckoInstance.healthInfo)
+        self.assertEqual(new_gecko.name, 'Leo')
+        self.assertEqual(new_gecko.sex, 'Female')
+        self.assertEqual(new_gecko.age, 12)
+        self.assertEqual(new_gecko.morphstr, ['Tangerine'])
+        self.assertEqual(new_gecko.healthInfo, ['Healthy'])
 
     @patch('sys.stdout', new_callable=StringIO)
     def test_print_gecko_info(self, mock_stdout):
