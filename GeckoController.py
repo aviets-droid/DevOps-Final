@@ -3,7 +3,7 @@
 
 import psycopg2
 import Morph
-import GeckoModel
+from GeckoModel import GeckoModel
 import GeckoView
 
 class GeckoController:
@@ -95,8 +95,8 @@ class GeckoController:
         cur.execute("""INSERT INTO usercollection (name, sex, age, morphs, healthInfo) VALUES (%s, %s, %s, %s, %s);""", (gecko.getName(gecko), gecko.getSex(gecko), gecko.getAge(gecko), gecko.getMorphNames(gecko), gecko.getHealthInfo(gecko)))
 
         conn.commit()
-        cur.close()
-        conn.close()
+        # cur.close()
+        # conn.close()
     
     # Fill geckos list with geckos from the database
     def fetchAllGeckos(self):
@@ -108,7 +108,7 @@ class GeckoController:
         cur = conn.cursor()
         cur.execute(f"""SELECT * FROM usercollection;""")
         for record in cur:
-            gecko = GeckoModel.GeckoModel(record[0], record[1], record[2], record[3], record[4], "")
+            gecko = GeckoModel(record[0], record[1], record[2], record[3], record[4], "")
             if gecko not in self.geckos:
                 self.geckos.append(gecko)
 

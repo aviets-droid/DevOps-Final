@@ -46,4 +46,4 @@ class TestGeckoView(unittest.TestCase):
         self.assertIn("Health-related notes: Perfect health", output)
 
 if __name__ == '__main__':
-    unittest.main()
+    unittest.main(verbosity=2)

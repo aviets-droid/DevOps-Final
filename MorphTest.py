@@ -5,24 +5,24 @@ class MorphTest(unittest.TestCase):
     def setUp(self):
         self.morph = Morph("TestMorph", True, "Test Recessive", "Test No Issue", "Test No Issue Desc")
     
-    def test_setMorphName(self):
+    def test_set_morph_name(self):
         newName = "NewMorphName"
         self.morph.setMorphName(newName)
         self.assertEqual(newName, self.morph.name)
     
-    def test_getMorphName(self):
+    def test_get_morph_name(self):
         getName = self.morph.getMorphName()
         self.assertEqual("TestMorph", getName)
 
-    def test_getMorphIssue(self):
+    def test_get_morph_issue(self):
         getIssue = self.morph.getMorphIssue()
         self.assertEqual("Test No Issue", getIssue)
     
-    def test_getMorphVisibility(self):
+    def test_get_morph_visibility(self):
         getVisibility = self.morph.getMorphVisibility()
         self.assertEqual(True, getVisibility)
     
-    def test_setMorphVisibility(self):
+    def test_set_morph_visibility(self):
         self.morph.setMorphVisibility(False)
         self.assertEqual(False, self.morph.isVisible)
         
