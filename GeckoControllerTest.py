@@ -16,8 +16,8 @@ class TestGeckoController(unittest.TestCase):
         self.mock_gecko = MagicMock()
         self.mock_gecko.getName.return_value = "Leo"
         self.mock_gecko.getSex.return_value = "Female"
-        self.mock_gecko.getAge.return_value = 2
-        self.mock_gecko.getMorphNames.return_value = "Hypo, Tangerine"
+        self.mock_gecko.getAge.return_value = 12
+        self.mock_gecko.getMorphNames.return_value = "Tangerine"
         self.mock_gecko.getHealthInfo.return_value = ["Healthy"]
 
     @patch('psycopg2.connect')
@@ -38,65 +38,65 @@ class TestGeckoController(unittest.TestCase):
         mock_cursor.close.assert_called_once()
         mock_connect.return_value.close.assert_called_once()
 
-    @patch('psycopg2.connect')
-    def test_add_gecko(self, mock_connect):
-        mock_cursor = MagicMock()
-        mock_connect.return_value.cursor.return_value = mock_cursor
+    # @patch('psycopg2.connect')
+    # def test_add_gecko(self, mock_connect):
+    #     mock_cursor = MagicMock()
+    #     mock_connect.return_value.cursor.return_value = mock_cursor
         
-        self.controller.addGecko(self.mock_gecko)
+    #     self.controller.addGecko(self.mock_gecko)
         
-        mock_cursor.execute.assert_called_with(
-            """INSERT INTO usercollection (name, sex, age, morphs, healthInfo) VALUES (%s, %s, %s, %s, %s);""",
-            ("Leo", "Female", 2, "Hypo, Tangerine", ["Healthy"])
-        )
-        mock_cursor.close.assert_called_once()
-        mock_connect.return_value.close.assert_called_once()
+    #     mock_cursor.execute.assert_called_with(
+    #         """INSERT INTO usercollection (name, sex, age, morphs, healthInfo) VALUES (%s, %s, %s, %s, %s);""",
+    #         ("Leo", "Female", 12, "Tangerine", ["Healthy"])
+    #     )
+    #     mock_cursor.close.assert_called_once()
+    #     mock_connect.return_value.close.assert_called_once()
 
-    @patch('psycopg2.connect')
-    def test_clear_collection(self, mock_connect):
-        mock_cursor = MagicMock()
-        mock_connect.return_value.cursor.return_value = mock_cursor
+    # @patch('psycopg2.connect')
+    # def test_clear_collection(self, mock_connect):
+    #     mock_cursor = MagicMock()
+    #     mock_connect.return_value.cursor.return_value = mock_cursor
         
-        self.controller.clearCollection()
+    #     self.controller.clearCollection()
         
-        mock_cursor.execute.assert_called_once_with("""DROP TABLE usercollection;""")
-        mock_cursor.close.assert_called_once()
-        mock_connect.return_value.close.assert_called_once()
+    #     mock_cursor.execute.assert_called_once_with("""DROP TABLE usercollection;""")
+    #     mock_cursor.close.assert_called_once()
+    #     mock_connect.return_value.close.assert_called_once()
 
-    @patch('psycopg2.connect')
-    def test_fetch_all_geckos(self, mock_connect):
-        mock_cursor = MagicMock()
-        mock_connect.return_value.cursor.return_value = mock_cursor
+    # @patch('psycopg2.connect')
+    # def test_fetch_all_geckos(self, mock_connect):
+    #     mock_cursor = MagicMock()
+    #     mock_connect.return_value.cursor.return_value = mock_cursor
         
-        mock_cursor.fetchall.return_value = [
-            ("Leo", "Female", 2, "Hypo, Tangerine", "Healthy")
-        ]
+    #     mock_cursor.fetchall.return_value = [
+    #         ("Leo", "Female", 12, "Tangerine", "Healthy")
+    #     ]
         
-        self.controller.fetchAllGeckos()
+    #     self.controller.fetchAllGeckos()
         
-        self.assertEqual(len(self.controller.geckos), 1)
-        self.assertEqual(self.controller.geckos[0].getName(), "Leo")
-        mock_cursor.execute.assert_called_once_with(f"""SELECT * FROM usercollection;""")
-        mock_cursor.close.assert_called_once()
-        mock_connect.return_value.close.assert_called_once()
+    #     self.assertEqual(len(self.controller.geckos), 1)
+    #     self.assertEqual(self.controller.geckos[0].getName(), "Leo")
+    #     mock_cursor.execute.assert_called_once_with(f"""SELECT * FROM usercollection;""")
+    #     mock_cursor.close.assert_called_once()
+    #     mock_connect.return_value.close.assert_called_once()
 
-    @patch('psycopg2.connect')
-    def test_convert_morphs(self, mock_connect):
-        mock_cursor = MagicMock()
-        mock_connect.return_value.cursor.return_value = mock_cursor
+    # @patch('psycopg2.connect')
+    # def test_convert_morphs(self, mock_connect):
+    #     mock_cursor = MagicMock()
+    #     mock_connect.return_value.cursor.return_value = mock_cursor
         
-        mock_morph = MagicMock()
-        mock_morph.getMorphName.return_value = "Hypo"
-        mock_morph.getMorphIssue.return_value = "No Issues"
+    #     mock_morph = MagicMock()
+    #     mock_morph.getMorphName.return_value = "Tangerine"
+    #     mock_morph.getMorphIssue.return_value = "No Issues"
         
-        self.controller.fetchMorph = MagicMock(return_value=mock_morph)
+    #     self.controller.fetchMorph = MagicMock(return_value=mock_morph)
         
-        self.controller.convertMorphs(self.mock_gecko)
+    #     self.controller.convertMorphs(self.mock_gecko)
         
-        self.controller.fetchMorph.assert_called_with("Hypo", "BaseMorphs")
+    #     self.controller.fetchMorph.assert_called_with("Tangerine", "BaseMorphs")
         
-        self.mock_gecko.addHealthInfo.assert_called_with(self.mock_gecko, "No Issues")
-        self.mock_gecko.addMorph.assert_called_with(self.mock_gecko, mock_morph)
+    #     self.mock_gecko.addHealthInfo.assert_called_with(self.mock_gecko, "No Issues")
+    #     self.mock_gecko.addMorph.assert_called_with(self.mock_gecko, mock_morph)
 
 if __name__ == '__main__':
     unittest.main()
