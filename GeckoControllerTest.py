@@ -59,8 +59,9 @@ class TestGeckoController(unittest.TestCase):
 
         mock_cursor.execute.assert_called_with(
             (
-                "INSERT INTO usercollection (name, sex, age, morphs, healthInfo) "
-                "VALUES (%s, %s, %s, %s, %s);"
+                "INSERT INTO usercollection ("
+                "name, sex, age, morphs, healthInfo"
+                ") VALUES (%s, %s, %s, %s, %s);"
             ),
             ("Leo", "Female", 12, "Tangerine", ["Healthy"]),
         )
