@@ -1,1 +1,3 @@
 Checking if github automatically runs tests in main
+
+Test 2
