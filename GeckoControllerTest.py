@@ -60,18 +60,6 @@ class TestGeckoController(unittest.TestCase):
         )
         
         self.controller.addGecko(self.mock_gecko)
-        
-        # cur.execute(
-        #     """INSERT INTO usercollection (name, sex, age, morphs, healthInfo) 
-        #     VALUES (%s, %s, %s, %s, %s);""",
-        #     (
-        #         gecko.getName(gecko),
-        #         gecko.getSex(gecko),
-        #         gecko.getAge(gecko),
-        #         gecko.getMorphNames(gecko),
-        #         gecko.getHealthInfo(gecko),
-        #     ),
-        # )
 
         mock_cursor.execute.assert_called_with(
                 "INSERT INTO usercollection ("
