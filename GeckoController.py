@@ -137,7 +137,7 @@ class GeckoController:
             print("Database failed to connect.\n")
 
         cur = conn.cursor()
-        cur.execute(f"""SELECT * FROM usercollection;""")
+        cur.execute("""SELECT * FROM usercollection;""")
         for record in cur:
             gecko = GeckoModel(
                 record[0], record[1], record[2], record[3], record[4], ""
