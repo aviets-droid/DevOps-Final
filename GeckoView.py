@@ -37,15 +37,23 @@ class GeckoView:
 
     @staticmethod
     def printGeckoInfo(gecko):
-        print(
-            "\n" + gecko.name + ", " + gecko.sex + ", " + str(gecko.age) + " years old."
-        )
-        print(
-            "Morphs: " + gecko.getMorphs()
-            )
-        print(
-            "Health-related notes: " + gecko.getHealthInfo()
-            )
+        print(f"\n{gecko.name}, {gecko.sex}, {gecko.age} years old.")
+
+        print(f"Morphs: {gecko.getMorphs()}")
+        print(f"Health-related notes: {gecko.getHealthInfo()}")
+
+        # print(
+        #     "\n" + gecko.name + ", 
+        # " + gecko.sex + ", 
+        # " + str(gecko.age) + 
+        # " years old."
+        # )
+        # print(
+        #     "Morphs: " + gecko.getMorphs()
+        #     )
+        # print(
+        #     "Health-related notes: " + gecko.getHealthInfo()
+        #     )
 
     @staticmethod
     def newGeckoRoutine():
