@@ -1,5 +1,4 @@
 import GeckoModel
-import Morph
 
 
 class GeckoView:

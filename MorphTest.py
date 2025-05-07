@@ -5,7 +5,11 @@ from Morph import Morph
 class MorphTest(unittest.TestCase):
     def setUp(self):
         self.morph = Morph(
-            "TestMorph", True, "Test Recessive", "Test No Issue", "Test No Issue Desc"
+            "TestMorph",
+            True,
+            "Test Recessive",
+            "Test No Issue",
+            "Test No Issue Desc"
         )
 
     def test_attributes(self):

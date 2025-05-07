@@ -149,7 +149,7 @@ class TestGeckoController(unittest.TestCase):
         mock_connect.return_value.close.assert_called_once()
 
     @patch("psycopg2.connect")
-    def test_updates_gecko(self, mock_connect): 
+    def test_updates_gecko(self, mock_connect):
         # Converts morph, fetches and updates gecko
         mock_cursor = MagicMock()
         mock_connect.return_value.cursor.return_value = mock_cursor

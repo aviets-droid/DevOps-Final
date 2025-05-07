@@ -3,7 +3,6 @@ from unittest.mock import patch, MagicMock
 from io import StringIO
 
 from GeckoView import GeckoView
-from GeckoModel import GeckoModel
 
 
 class TestGeckoView(unittest.TestCase):

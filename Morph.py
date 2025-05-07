@@ -5,11 +5,20 @@ class Morph(object):
     associatedHealthIssue = ""
     issueDesc = ""
 
-    def __init__(self, name, isVisible, level, associatedHealthIssue, issueDesc):
+    def __init__(
+        self,
+        name,
+        isVisible,
+        level,
+        associatedHealthIssue,
+        issueDesc
+        ):
         self.name = name
         self.isVisible = isVisible
         self.level = level
-        self.associatedHealthIssue = associatedHealthIssue
+        self.associatedHealthIssue = (
+            associatedHealthIssue
+        )
         self.issueDesc = issueDesc
 
     def setMorphName(self, name):
@@ -28,4 +37,6 @@ class Morph(object):
         if type(visibility) == bool:
             self.isVisible = visibility
         else:
-            raise TypeError("Visibility is supposed to be a boolean value.")
+            raise TypeError(
+                "Visibility is supposed to be a boolean value."
+                )

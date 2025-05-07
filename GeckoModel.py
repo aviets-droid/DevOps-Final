@@ -1,7 +1,6 @@
 # Aisling Viets
 # GeckoModel.py
 
-import Morph
 
 
 class GeckoModel:
