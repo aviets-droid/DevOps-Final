@@ -5,8 +5,29 @@ from Morph import Morph
 class MorphTest(unittest.TestCase):
     def setUp(self):
         self.morph = Morph(
-            "TestMorph", True, "Test Recessive", "Test No Issue", "Test No Issue Desc"
+            "TestMorph", 
+            True, 
+            "Test Recessive", 
+            "Test No Issue", 
+            "Test No Issue Desc"
         )
+    
+    def test_attributes(self):
+        self.assertEqual(
+            self.morph.name, "TestMorph"
+            )
+        self.assertTrue(
+            self.morph.isVisible
+            )
+        self.assertEqual(
+            self.morph.level, "Test Recessive"
+            )
+        self.assertEqual(
+            self.morph.associatedHealthIssue, "Test No Issue"
+            )
+        self.assertEqual(
+            self.morph.issueDesc, "Test No Issue Desc"
+            )
 
     def test_set_morph_name(self):
         newName = "NewMorphName"
