@@ -69,8 +69,6 @@ class GeckoView:
         numMorphs = int(input("Enter the amount of morphs your gecko has: "))
         for i in range(numMorphs):
             newgecko.morphstr.append(str(input(f"Enter morph {i+1}: ")))
-            # morph = Morph.Morph(str(input(f"Enter morph {i+1}: ")), True, "", "", "")
-            # newgecko.addMorph(newgecko, morph)
         newgecko.healthInfo.append(input("Health-related notes: "))
 
         return newgecko
