@@ -150,7 +150,7 @@ class GeckoController:
         cur.close()
         conn.close()
 
-    # Fetches the morph of a given name and from a given table, returns morph object with retrieved info
+
     def fetchMorph(self, morphName, tablename):
         # Connect and fetch information from the database
         try:
@@ -167,10 +167,10 @@ class GeckoController:
 
         try:
             cur.execute(
-                f"""SELECT name, type, issue, description 
-                FROM "{tablename}" 
-                LEFT JOIN "HealthInfo" 
-                ON "{tablename}".name = "HealthInfo".morph 
+                f"""SELECT name, type, issue, description
+                FROM "{tablename}"
+                LEFT JOIN "HealthInfo"
+                ON "{tablename}".name = "HealthInfo".morph
                 WHERE name = '{morphName}';"""
             )
         except Exception:

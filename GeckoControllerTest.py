@@ -180,10 +180,10 @@ class TestGeckoController(unittest.TestCase):
         self.controller.convertMorphs(mock_gecko)
 
         mock_cursor.execute.assert_called_with(
-            """SELECT name, type, issue, description 
-                FROM "BaseMorphs" 
-                LEFT JOIN "HealthInfo" 
-                ON "BaseMorphs".name = "HealthInfo".morph 
+            """SELECT name, type, issue, description
+                FROM "BaseMorphs"
+                LEFT JOIN "HealthInfo"
+                ON "BaseMorphs".name = "HealthInfo".morph
                 WHERE name = 'Tangerine';"""
         )
         mock_gecko.addHealthInfo.assert_called_with(mock_gecko, "No Issues")
