@@ -4,3 +4,7 @@ __pycache__/
 venv/
 .env/
 .venv/
+README.Docker.md
+.dockerignore
+compose.yaml
+Dockerfile
