@@ -1,14 +1,22 @@
 import GeckoModel
-import Morph
+
 
 class GeckoView:
     geckoModel = GeckoModel
 
     def __init__(self, geckoModel):
         self.geckoModel = geckoModel
-    
+
+    @staticmethod
     def printStartMenu():
-        print("\n-- Leopard Gecko Collection Manager --\n\nSelect an action:\n1. Create a collection\n2. Add a gecko to my collection\n3. View my geckos\n4. Delete my collection table (erases all saved geckos!)")
+        print(
+            "\n-- Leopard Gecko Collection Manager --\n"
+            "\nSelect an action:"
+            "\n1. Create a collection"
+            "\n2. Add a gecko to my collection"
+            "\n3. View my geckos"
+            "\n4. Delete my collection table (erases all saved geckos!)"
+        )
         print("0. Exit\n")
         userinput = int(input("Action: "))
         match (userinput):
@@ -25,18 +33,34 @@ class GeckoView:
             case _:
                 print("\nInvalid input.\n")
         return userinput
-    
+
+    @staticmethod
     def printGeckoInfo(gecko):
-        print("\n" + gecko.name + ", " + gecko.sex + ", " + str(gecko.age) + " years old.")
-        print("Morphs: " + gecko.getMorphs())
-        print("Health-related notes: " + gecko.getHealthInfo())
-    
+        print(f"\n{gecko.name}, {gecko.sex}, {gecko.age} years old.")
+
+        print(f"Morphs: {gecko.getMorphs()}")
+        print(f"Health-related notes: {gecko.getHealthInfo()}")
+
+        # print(
+        #     "\n" + gecko.name + ",
+        # " + gecko.sex + ",
+        # " + str(gecko.age) +
+        # " years old."
+        # )
+        # print(
+        #     "Morphs: " + gecko.getMorphs()
+        #     )
+        # print(
+        #     "Health-related notes: " + gecko.getHealthInfo()
+        #     )
+
+    @staticmethod
     def newGeckoRoutine():
         newgecko = GeckoModel.GeckoModel
-        
+
         newgecko.clearHealth(newgecko)
         newgecko.clearMorphs(newgecko)
-        
+
         print("-- Enter gecko details --\n")
         newgecko.setName(newgecko, input("Name: "))
         newgecko.setSex(newgecko, input("Sex: "))
@@ -44,8 +68,6 @@ class GeckoView:
         numMorphs = int(input("Enter the amount of morphs your gecko has: "))
         for i in range(numMorphs):
             newgecko.morphstr.append(str(input(f"Enter morph {i+1}: ")))
-            # morph = Morph.Morph(str(input(f"Enter morph {i+1}: ")), True, "", "", "")
-            # newgecko.addMorph(newgecko, morph)
         newgecko.healthInfo.append(input("Health-related notes: "))
-        
+
         return newgecko
