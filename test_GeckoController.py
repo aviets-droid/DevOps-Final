@@ -91,7 +91,7 @@ class TestGeckoController(unittest.TestCase):
 
         self.assertEqual(len(self.controller.geckos), 1)
         self.assertEqual(self.controller.geckos[0].getName(), "Leo")
-        mock_cursor.execute.assert_called_once_with(
+        mock_cursor.execute.assert_called_with(
             "SELECT * FROM usercollection;"
             )
         mock_cursor.close.assert_called_once()

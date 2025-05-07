@@ -160,8 +160,8 @@ class GeckoController:
             if gecko not in self.geckos:
                 self.geckos.append(gecko)
         conn.commit()
-        cur.close()
-        conn.close()
+        # cur.close()
+        # conn.close()
 
     def fetchMorph(self, morphName, tablename):
         # Connect and fetch information from the database
