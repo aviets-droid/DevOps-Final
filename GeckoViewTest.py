@@ -27,7 +27,14 @@ class TestGeckoView(unittest.TestCase):
 
     @patch(
         "builtins.input",
-        side_effect=["Leo", "Female", "12", "1", "Tangerine", "Healthy"],
+        side_effect=[
+            "Leo", 
+            "Female", 
+            "12", 
+            "1", 
+            "Tangerine", 
+            "Healthy",
+        ],
     )
     def test_new_gecko_routine(self, mock_input):
         new_gecko = self.view.newGeckoRoutine()
