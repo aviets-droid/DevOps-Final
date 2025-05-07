@@ -12,7 +12,9 @@ class TestGeckoController(unittest.TestCase):
 
         self.mock_gecko_model = MagicMock()
         self.mock_gecko_view = MagicMock()
-        self.controller = GeckoController(self.mock_gecko_model, self.mock_gecko_view)
+        self.controller = GeckoController(
+            self.mock_gecko_model, 
+            self.mock_gecko_view)
 
         self.mock_gecko = MagicMock()
         self.mock_gecko.getName.return_value = "Leo"
@@ -32,7 +34,10 @@ class TestGeckoController(unittest.TestCase):
 
         # Connect and check that the commands were executed (using assertIn multiple times to avoid issues with Python text formatting)
         mock_connect.assert_called_once_with(
-            "dbname=LeopardGeckos user=postgres password=#2Truckee port=5433"
+            "dbname=LeopardGeckos "
+            "user=postgres "
+            "password=#2Truckee "
+            "port=5433"
         )
         called_args = mock_cursor.execute.call_args[0][0]
         self.assertIn("CREATE TABLE IF NOT EXISTS usercollection", called_args)
