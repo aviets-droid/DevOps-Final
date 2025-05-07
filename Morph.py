@@ -34,7 +34,7 @@ class Morph(object):
         return self.isVisible
 
     def setMorphVisibility(self, visibility: bool):
-        if isinstance(visibility, bool)
+        if isinstance(visibility, bool):
             self.isVisible = visibility
         else:
             raise TypeError(
