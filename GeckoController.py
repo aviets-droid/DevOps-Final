@@ -111,7 +111,8 @@ class GeckoController:
 
         cur = conn.cursor()
         cur.execute(
-            """INSERT INTO usercollection (name, sex, age, morphs, healthInfo) VALUES (%s, %s, %s, %s, %s);""",
+            "INSERT INTO usercollection (name, sex, age, morphs, healthInfo) "
+            "VALUES (%s, %s, %s, %s, %s);",
             (
                 gecko.getName(gecko),
                 gecko.getSex(gecko),
@@ -122,8 +123,6 @@ class GeckoController:
         )
 
         conn.commit()
-        # cur.close()
-        # conn.close()
 
     # Fill geckos list with geckos from the database
     def fetchAllGeckos(self):
@@ -164,8 +163,6 @@ class GeckoController:
         except Exception:
             print("Database failed to connect.\n")
 
-        # print(morphName) # DEBUG PRINT
-
         cur = conn.cursor()
 
         try:
@@ -180,7 +177,6 @@ class GeckoController:
             return -1
 
         data = cur.fetchone()
-        # print(data) # DEBUG PRINT
         conn.commit()
 
         # New morph object
