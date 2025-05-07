@@ -61,7 +61,7 @@ class GeckoController:
                 "password=#2Truckee "
                 "port=5433"
             )
-        except:
+        except Exception:
             print("Database failed to connect.\n")
 
         cur = conn.cursor()
@@ -74,7 +74,7 @@ class GeckoController:
                 morphs text,
                 healthInfo text);"""
             )
-        except:
+        except Exception:
             return -1
         conn.commit()
         cur.close()
@@ -88,7 +88,7 @@ class GeckoController:
                 "password=#2Truckee "
                 "port=5433"
             )
-        except:
+        except Exception:
             print("Database failed to connect.\n")
 
         cur = conn.cursor()
@@ -106,7 +106,7 @@ class GeckoController:
                 "password=#2Truckee "
                 "port=5433"
             )
-        except:
+        except Exception:
             print("Database failed to connect.\n")
 
         cur = conn.cursor()
@@ -134,7 +134,7 @@ class GeckoController:
                 "password=#2Truckee "
                 "port=5433"
             )
-        except:
+        except Exception:
             print("Database failed to connect.\n")
 
         cur = conn.cursor()
@@ -161,7 +161,7 @@ class GeckoController:
                 "password=#2Truckee "
                 "port=5433"
             )
-        except:
+        except Exception:
             print("Database failed to connect.\n")
 
         # print(morphName) # DEBUG PRINT
@@ -176,7 +176,7 @@ class GeckoController:
                 ON "{tablename}".name = "HealthInfo".morph 
                 WHERE name = '{morphName}';"""
             )
-        except:
+        except Exception:
             return -1
 
         data = cur.fetchone()
