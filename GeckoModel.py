@@ -1,8 +1,6 @@
 # Aisling Viets
 # GeckoModel.py
 
-
-
 class GeckoModel:
     name = ""
     age = 0

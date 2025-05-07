@@ -12,7 +12,7 @@ class Morph(object):
         level,
         associatedHealthIssue,
         issueDesc
-        ):
+    ):
         self.name = name
         self.isVisible = isVisible
         self.level = level
@@ -34,7 +34,7 @@ class Morph(object):
         return self.isVisible
 
     def setMorphVisibility(self, visibility: bool):
-        if type(visibility) == bool:
+        if isinstance(visibility, bool)
             self.isVisible = visibility
         else:
             raise TypeError(
