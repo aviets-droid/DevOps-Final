@@ -50,8 +50,11 @@ class GeckoController:
                 morphobj = self.fetchMorph(morph, "MorphCombos")
             if morphobj == -1:
                 morphobj = self.fetchMorph(morph, "PolygenicTraits")
-            gecko.addHealthInfo(gecko, morphobj.getMorphIssue())
-            gecko.addMorph(gecko, morphobj)
+            if morphobj != -1:
+                gecko.addHealthInfo(gecko, morphobj.getMorphIssue())
+                gecko.addMorph(gecko, morphobj)
+            else:
+                print(f"Failed to retrieve the {morph} morph from database.")
 
     def newCollection(self):
         try:
@@ -81,6 +84,7 @@ class GeckoController:
         conn.close()
 
     def clearCollection(self):
+        clearGoAhead = False
         try:
             conn = psycopg2.connect(
                 "dbname=LeopardGeckos "
@@ -92,8 +96,15 @@ class GeckoController:
             print("Database failed to connect.\n")
 
         cur = conn.cursor()
-        cur.execute("""DROP TABLE usercollection;""")
-        conn.commit()
+        try:
+            cur.execute("""DROP TABLE usercollection;""")
+            clearGoAhead = True
+        except Exception:
+            clearGoAhead = False
+        if (clearGoAhead):
+            conn.commit()
+        else:
+            print("Table does not exist!")
         cur.close()
         conn.close()
 
@@ -135,9 +146,17 @@ class GeckoController:
             )
         except Exception:
             print("Database failed to connect.\n")
+        
+        try:
+            cur.execute("""SELECT * FROM usercollection;""")
+        except Exception:
+            print("Collection does not exist! Creating a new collection...\n")
+            
+        self.newCollection()
 
         cur = conn.cursor()
         cur.execute("""SELECT * FROM usercollection;""")
+            
         for record in cur:
             gecko = GeckoModel(
                 record[0], record[1], record[2], record[3], record[4], ""
