@@ -11,7 +11,12 @@ class GeckoView:
     @staticmethod
     def printStartMenu():
         print(
-            "\n-- Leopard Gecko Collection Manager --\n\nSelect an action:\n1. Create a collection\n2. Add a gecko to my collection\n3. View my geckos\n4. Delete my collection table (erases all saved geckos!)"
+            "\n-- Leopard Gecko Collection Manager --\n"
+            "\nSelect an action:"
+            "\n1. Create a collection"
+            "\n2. Add a gecko to my collection"
+            "\n3. View my geckos"
+            "\n4. Delete my collection table (erases all saved geckos!)"
         )
         print("0. Exit\n")
         userinput = int(input("Action: "))
@@ -35,8 +40,12 @@ class GeckoView:
         print(
             "\n" + gecko.name + ", " + gecko.sex + ", " + str(gecko.age) + " years old."
         )
-        print("Morphs: " + gecko.getMorphs())
-        print("Health-related notes: " + gecko.getHealthInfo())
+        print(
+            "Morphs: " + gecko.getMorphs()
+            )
+        print(
+            "Health-related notes: " + gecko.getHealthInfo()
+            )
 
     @staticmethod
     def newGeckoRoutine():
