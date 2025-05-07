@@ -56,7 +56,10 @@ class GeckoController:
     def newCollection(self):
         try:
             conn = psycopg2.connect(
-                "dbname=LeopardGeckos user=postgres password=#2Truckee port=5433"
+                "dbname=LeopardGeckos "
+                "user=postgres "
+                "password=#2Truckee "
+                "port=5433"
             )
         except:
             print("Database failed to connect.\n")
@@ -80,7 +83,10 @@ class GeckoController:
     def clearCollection(self):
         try:
             conn = psycopg2.connect(
-                "dbname=LeopardGeckos user=postgres password=#2Truckee port=5433"
+                "dbname=LeopardGeckos "
+                "user=postgres "
+                "password=#2Truckee "
+                "port=5433"
             )
         except:
             print("Database failed to connect.\n")
@@ -95,7 +101,10 @@ class GeckoController:
         self.newCollection()  # Ensure that the user table exists
         try:
             conn = psycopg2.connect(
-                "dbname=LeopardGeckos user=postgres password=#2Truckee port=5433"
+                "dbname=LeopardGeckos "
+                "user=postgres "
+                "password=#2Truckee "
+                "port=5433"
             )
         except:
             print("Database failed to connect.\n")
@@ -120,7 +129,10 @@ class GeckoController:
     def fetchAllGeckos(self):
         try:
             conn = psycopg2.connect(
-                "dbname=LeopardGeckos user=postgres password=#2Truckee port=5433"
+                "dbname=LeopardGeckos "
+                "user=postgres "
+                "password=#2Truckee "
+                "port=5433"
             )
         except:
             print("Database failed to connect.\n")
@@ -144,7 +156,10 @@ class GeckoController:
         # Connect and fetch information from the database
         try:
             conn = psycopg2.connect(
-                "dbname=LeopardGeckos user=postgres password=#2Truckee port=5433"
+                "dbname=LeopardGeckos "
+                "user=postgres "
+                "password=#2Truckee "
+                "port=5433"
             )
         except:
             print("Database failed to connect.\n")
