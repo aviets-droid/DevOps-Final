@@ -2,6 +2,7 @@ import unittest
 from unittest.mock import MagicMock
 from GeckoModel import GeckoModel
 
+
 class TestGeckoModel(unittest.TestCase):
 
     def setUp(self):
@@ -9,14 +10,14 @@ class TestGeckoModel(unittest.TestCase):
         self.mock_morph1.getMorphName.return_value = "Hypo"
         self.mock_morph2 = MagicMock()
         self.mock_morph2.getMorphName.return_value = "Tangerine"
-        
+
         self.gecko = GeckoModel(
             name="Leo",
             sex="Female",
             age=2,
             morphs=[self.mock_morph1],
             healthInfo=["Healthy"],
-            morphstr=["Hypo"]
+            morphstr=["Hypo"],
         )
 
     def test_get_and_set_name(self):
@@ -70,5 +71,6 @@ class TestGeckoModel(unittest.TestCase):
         self.gecko.clearHealth()
         self.assertEqual(self.gecko.getHealthInfo(), [])
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     unittest.main(verbosity=2)

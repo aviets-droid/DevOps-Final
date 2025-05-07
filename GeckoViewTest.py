@@ -5,6 +5,7 @@ from io import StringIO
 from GeckoView import GeckoView
 from GeckoModel import GeckoModel
 
+
 class TestGeckoView(unittest.TestCase):
 
     def setUp(self):
@@ -13,24 +14,27 @@ class TestGeckoView(unittest.TestCase):
         self.mockGeckoModel.GeckoModel.return_value = self.mockGeckoInstance
         self.view = GeckoView(self.mockGeckoModel)
 
-    @patch('builtins.input', return_value='1')
-    @patch('sys.stdout', new_callable=StringIO)
+    @patch("builtins.input", return_value="1")
+    @patch("sys.stdout", new_callable=StringIO)
     def test_print_start_menu_create_collection(self, mock_stdout, mock_input):
         result = self.view.printStartMenu()
         self.assertEqual(result, 1)
         self.assertIn("Created a new collection.", mock_stdout.getvalue())
 
-    @patch('builtins.input', side_effect=['Leo', 'Female', '12', '1', 'Tangerine', 'Healthy'])
+    @patch(
+        "builtins.input",
+        side_effect=["Leo", "Female", "12", "1", "Tangerine", "Healthy"],
+    )
     def test_new_gecko_routine(self, mock_input):
         new_gecko = self.view.newGeckoRoutine()
 
-        self.assertEqual(new_gecko.name, 'Leo')
-        self.assertEqual(new_gecko.sex, 'Female')
+        self.assertEqual(new_gecko.name, "Leo")
+        self.assertEqual(new_gecko.sex, "Female")
         self.assertEqual(new_gecko.age, 12)
-        self.assertEqual(new_gecko.morphstr, ['Tangerine'])
-        self.assertEqual(new_gecko.healthInfo, ['Healthy'])
+        self.assertEqual(new_gecko.morphstr, ["Tangerine"])
+        self.assertEqual(new_gecko.healthInfo, ["Healthy"])
 
-    @patch('sys.stdout', new_callable=StringIO)
+    @patch("sys.stdout", new_callable=StringIO)
     def test_print_gecko_info(self, mock_stdout):
         gecko = MagicMock()
         gecko.name = "Spike"
@@ -45,5 +49,6 @@ class TestGeckoView(unittest.TestCase):
         self.assertIn("Morphs: Albino", output)
         self.assertIn("Health-related notes: Perfect health", output)
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     unittest.main(verbosity=2)
