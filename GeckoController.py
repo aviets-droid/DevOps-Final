@@ -150,7 +150,6 @@ class GeckoController:
         cur.close()
         conn.close()
 
-
     def fetchMorph(self, morphName, tablename):
         # Connect and fetch information from the database
         try:
