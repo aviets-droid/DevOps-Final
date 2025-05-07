@@ -170,7 +170,11 @@ class GeckoController:
 
         try:
             cur.execute(
-                f"""SELECT name, type, issue, description FROM "{tablename}" LEFT JOIN "HealthInfo" ON "{tablename}".name = "HealthInfo".morph WHERE name = '{morphName}';"""
+                f"""SELECT name, type, issue, description 
+                FROM "{tablename}" 
+                LEFT JOIN "HealthInfo" 
+                ON "{tablename}".name = "HealthInfo".morph 
+                WHERE name = '{morphName}';"""
             )
         except:
             return -1
