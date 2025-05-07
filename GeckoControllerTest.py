@@ -32,7 +32,7 @@ class TestGeckoController(unittest.TestCase):
 
         self.controller.newCollection()
 
-        # Connect and check that the commands were executed (using assertIn multiple times to avoid issues with Python text formatting)
+        # Connect and check that the commands were executed 
         mock_connect.assert_called_once_with(
             "dbname=LeopardGeckos "
             "user=postgres "
@@ -58,16 +58,22 @@ class TestGeckoController(unittest.TestCase):
         self.controller.addGecko(self.mock_gecko)
 
         mock_cursor.execute.assert_called_with(
-            """INSERT INTO usercollection (name, sex, age, morphs, healthInfo) VALUES (%s, %s, %s, %s, %s);""",
+            (
+                "INSERT INTO usercollection (name, sex, age, morphs, healthInfo) "
+                "VALUES (%s, %s, %s, %s, %s);"
+            ),
             ("Leo", "Female", 12, "Tangerine", ["Healthy"]),
         )
+
         mock_cursor.close.assert_called_once()
         mock_connect.return_value.close.assert_called_once()
 
     @patch("psycopg2.connect")
     def test_clear_collection(self, mock_connect):
         mock_cursor = MagicMock()
-        mock_connect.return_value.cursor.return_value = mock_cursor
+        mock_connect.return_value.cursor.return_value = (
+            mock_cursor
+        )
 
         self.controller.clearCollection()
 
