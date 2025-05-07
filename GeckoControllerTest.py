@@ -9,7 +9,9 @@ class TestGeckoController(unittest.TestCase):
 
         self.mock_gecko_model = MagicMock()
         self.mock_gecko_view = MagicMock()
-        self.controller = GeckoController(self.mock_gecko_model, self.mock_gecko_view)
+        self.controller = GeckoController(
+            self.mock_gecko_model, self.mock_gecko_view
+            )
 
         self.mock_gecko = MagicMock()
         self.mock_gecko.getName.return_value = "Leo"
@@ -24,7 +26,10 @@ class TestGeckoController(unittest.TestCase):
         mock_connect.return_value.cursor.return_value = mock_cursor
         self.controller.newCollection()
         mock_connect.assert_called_once_with(
-            "dbname=LeopardGeckos " "user=postgres " "password=#2Truckee " "port=5433"
+            "dbname=LeopardGeckos "
+            "user=postgres "
+            "password=#2Truckee "
+            "port=5433"
         )
         called_args = mock_cursor.execute.call_args[0][0]
         self.assertIn("CREATE TABLE IF NOT EXISTS usercollection", called_args)
@@ -40,7 +45,9 @@ class TestGeckoController(unittest.TestCase):
     @patch("psycopg2.connect")
     def test_add_gecko(self, mock_connect):
         mock_cursor = MagicMock()
-        mock_connect.return_value.cursor.return_value = mock_cursor
+        mock_connect.return_value.cursor.return_value = (
+            mock_cursor
+        )
 
         self.controller.addGecko(self.mock_gecko)
 
@@ -57,18 +64,24 @@ class TestGeckoController(unittest.TestCase):
     @patch("psycopg2.connect")
     def test_clear_collection(self, mock_connect):
         mock_cursor = MagicMock()
-        mock_connect.return_value.cursor.return_value = mock_cursor
+        mock_connect.return_value.cursor.return_value = (
+            mock_cursor
+        )
 
         self.controller.clearCollection()
 
-        mock_cursor.execute.assert_called_once_with("""DROP TABLE usercollection;""")
+        mock_cursor.execute.assert_called_once_with(
+            """DROP TABLE usercollection;"""
+            )
         mock_cursor.close.assert_called_once()
         mock_connect.return_value.close.assert_called_once()
 
     @patch("psycopg2.connect")
     def test_fetch_all_geckos(self, mock_connect):
         mock_cursor = MagicMock()
-        mock_connect.return_value.cursor.return_value = mock_cursor
+        mock_connect.return_value.cursor.return_value = (
+            mock_cursor
+        )
 
         mock_cursor.__iter__.return_value = iter(
             [("Leo", "Female", 12, "Tangerine", "Healthy")]
@@ -78,33 +91,49 @@ class TestGeckoController(unittest.TestCase):
 
         self.assertEqual(len(self.controller.geckos), 1)
         self.assertEqual(self.controller.geckos[0].getName(), "Leo")
-        mock_cursor.execute.assert_called_once_with("SELECT * FROM usercollection;")
+        mock_cursor.execute.assert_called_once_with(
+            "SELECT * FROM usercollection;"
+            )
         mock_cursor.close.assert_called_once()
         mock_connect.return_value.close.assert_called_once()
 
     @patch("psycopg2.connect")
     def test_convert_morphs(self, mock_connect):
         mock_cursor = MagicMock()
-        mock_connect.return_value.cursor.return_value = mock_cursor
+        mock_connect.return_value.cursor.return_value = (
+            mock_cursor
+        )
 
         mock_morph = MagicMock()
         self.mock_gecko.morphstr = ["Tangerine"]
-        mock_morph.getMorphName.return_value = "Tangerine"
-        mock_morph.getMorphIssue.return_value = "No Issues"
+        mock_morph.getMorphName.return_value = (
+            "Tangerine"
+        )
+        mock_morph.getMorphIssue.return_value = (
+            "No Issues"
+        )
 
         self.controller.fetchMorph = MagicMock(return_value=mock_morph)
 
         self.controller.convertMorphs(self.mock_gecko)
 
-        self.controller.fetchMorph.assert_called_with("Tangerine", "BaseMorphs")
+        self.controller.fetchMorph.assert_called_with(
+            "Tangerine", "BaseMorphs"
+            )
 
-        self.mock_gecko.addHealthInfo.assert_called_with(self.mock_gecko, "No Issues")
-        self.mock_gecko.addMorph.assert_called_with(self.mock_gecko, mock_morph)
+        self.mock_gecko.addHealthInfo.assert_called_with(
+            self.mock_gecko, "No Issues"
+            )
+        self.mock_gecko.addMorph.assert_called_with(
+            self.mock_gecko, mock_morph
+            )
 
     @patch("psycopg2.connect")
     def test_new_collection_creates_table(self, mock_connect):
         mock_cursor = MagicMock()
-        mock_connect.return_value.cursor.return_value = mock_cursor
+        mock_connect.return_value.cursor.return_value = (
+            mock_cursor
+        )
 
         self.controller.newCollection()
 
@@ -120,7 +149,8 @@ class TestGeckoController(unittest.TestCase):
         mock_connect.return_value.close.assert_called_once()
 
     @patch("psycopg2.connect")
-    def test_convert_morphs_fetches_morphs_and_updates_gecko(self, mock_connect):
+    def test_updates_gecko(self, mock_connect): 
+        # Converts morph, fetches and updates gecko
         mock_cursor = MagicMock()
         mock_connect.return_value.cursor.return_value = mock_cursor
 
@@ -149,13 +179,18 @@ class TestGeckoController(unittest.TestCase):
         self.assertTrue(mock_gecko.addMorph.called)
 
     @patch("psycopg2.connect")
-    def test_clear_collection_drops_table(self, mock_connect):
+    def test_clear_drop(self, mock_connect):
+        # Test table drop on collection clear
         mock_cursor = MagicMock()
-        mock_connect.return_value.cursor.return_value = mock_cursor
+        mock_connect.return_value.cursor.return_value = (
+            mock_cursor
+        )
 
         self.controller.clearCollection()
 
-        mock_cursor.execute.assert_called_with("DROP TABLE usercollection;")
+        mock_cursor.execute.assert_called_with(
+            "DROP TABLE usercollection;"
+            )
         mock_cursor.close.assert_called_once()
         mock_connect.return_value.close.assert_called_once()
 
