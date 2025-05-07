@@ -43,9 +43,9 @@ class GeckoView:
         print(f"Health-related notes: {gecko.getHealthInfo()}")
 
         # print(
-        #     "\n" + gecko.name + ", 
-        # " + gecko.sex + ", 
-        # " + str(gecko.age) + 
+        #     "\n" + gecko.name + ",
+        # " + gecko.sex + ",
+        # " + str(gecko.age) +
         # " years old."
         # )
         # print(

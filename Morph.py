@@ -5,14 +5,7 @@ class Morph(object):
     associatedHealthIssue = ""
     issueDesc = ""
 
-    def __init__(
-        self, 
-        name, 
-        isVisible, 
-        level, 
-        associatedHealthIssue, 
-        issueDesc
-        ):
+    def __init__(self, name, isVisible, level, associatedHealthIssue, issueDesc):
         self.name = name
         self.isVisible = isVisible
         self.level = level

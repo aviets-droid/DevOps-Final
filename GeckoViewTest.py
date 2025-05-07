@@ -11,9 +11,7 @@ class TestGeckoView(unittest.TestCase):
     def setUp(self):
         self.mockGeckoModel = MagicMock()
         self.mockGeckoInstance = MagicMock()
-        self.mockGeckoModel.GeckoModel.return_value = (
-            self.mockGeckoInstance
-        )
+        self.mockGeckoModel.GeckoModel.return_value = self.mockGeckoInstance
         self.view = GeckoView(self.mockGeckoModel)
 
     @patch("builtins.input", return_value="1")
@@ -21,18 +19,16 @@ class TestGeckoView(unittest.TestCase):
     def test_print_start_collection(self, mock_stdout, mock_input):
         result = self.view.printStartMenu()
         self.assertEqual(result, 1)
-        self.assertIn(
-            "Created a new collection.", mock_stdout.getvalue()
-            )
+        self.assertIn("Created a new collection.", mock_stdout.getvalue())
 
     @patch(
         "builtins.input",
         side_effect=[
-            "Leo", 
-            "Female", 
-            "12", 
-            "1", 
-            "Tangerine", 
+            "Leo",
+            "Female",
+            "12",
+            "1",
+            "Tangerine",
             "Healthy",
         ],
     )
@@ -51,24 +47,14 @@ class TestGeckoView(unittest.TestCase):
         gecko.name = "Spike"
         gecko.sex = "Male"
         gecko.age = 3
-        gecko.getMorphs.return_value = (
-            "Albino"
-        )
-        gecko.getHealthInfo.return_value = (
-            "Perfect health"
-        )
+        gecko.getMorphs.return_value = "Albino"
+        gecko.getHealthInfo.return_value = "Perfect health"
 
         self.view.printGeckoInfo(gecko)
         output = mock_stdout.getvalue()
-        self.assertIn(
-            "Spike, Male, 3 years old.", output
-            )
-        self.assertIn(
-            "Morphs: Albino", output
-            )
-        self.assertIn(
-            "Health-related notes: Perfect health", output
-            )
+        self.assertIn("Spike, Male, 3 years old.", output)
+        self.assertIn("Morphs: Albino", output)
+        self.assertIn("Health-related notes: Perfect health", output)
 
 
 if __name__ == "__main__":
