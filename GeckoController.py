@@ -146,26 +146,20 @@ class GeckoController:
             )
         except Exception:
             print("Database failed to connect.\n")
-        
         try:
             cur.execute("""SELECT * FROM usercollection;""")
         except Exception:
             print("Collection does not exist! Creating a new collection...\n")
-            
         self.newCollection()
-
         cur = conn.cursor()
         cur.execute("""SELECT * FROM usercollection;""")
-            
         for record in cur:
             gecko = GeckoModel(
                 record[0], record[1], record[2], record[3], record[4], ""
             )
             if gecko not in self.geckos:
                 self.geckos.append(gecko)
-
         conn.commit()
-
         cur.close()
         conn.close()
 
